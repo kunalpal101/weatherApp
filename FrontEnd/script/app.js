@@ -8,8 +8,7 @@ const options = {
 
 const getWeather = async (city) => {
   cityName.innerHTML = city;
-
-  await fetch(
+  +(await fetch(
     "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=" + city,
     options
   )
@@ -27,10 +26,10 @@ const getWeather = async (city) => {
       wind_speed.innerHTML = res.wind_speed;
       wind_speed2.innerHTML = res.wind_speed;
       // wind_degrees = res.wind_degrees;
-      sunrise.innerHTML = res.sunrise;
-      sunset.innerHTML = res.sunset;
+      sunrise.innerHTML = getTime(res.sunrise);
+      sunset.innerHTML = getTime(res.sunset);
     })
-    .catch((err) => console.error(err));
+    .catch((err) => console.error(err)));
 };
 
 submit.addEventListener("click", (e) => {
